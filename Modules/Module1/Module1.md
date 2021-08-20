@@ -189,7 +189,7 @@ You may update both simultaneously from Visual Studio by selecting.
 
 What is the difference between Git and GitHub?
 
- - Answer:
+ - Answer: The difference between Git and GitHub is that Git lets you control, manage and keep track of your code history and GitHUb is a the cloud that lets you mange Git repositories.
 
 What is the difference between a git commit and a git push?
 
