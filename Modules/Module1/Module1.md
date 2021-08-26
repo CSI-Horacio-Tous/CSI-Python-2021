@@ -193,11 +193,11 @@ What is the difference between Git and GitHub?
 
 What is the difference between a git commit and a git push?
 
- - Answer:
+ - Answer:Git commit saves it localy  while a push send the changes to the remote location
 
 What is the difference between a pull, and an upstream pull?
 
- - Answer:
+ - Answer: Git fetch is the command that tells your local to retrieve updates and git ull copy the changes from the remote repository
 
 What part of these instructions was unclear or incomplete?
 
