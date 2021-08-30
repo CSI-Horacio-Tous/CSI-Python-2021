@@ -49,7 +49,7 @@ Markdown is a lightweight markup language that you can use to add formatting ele
 
 * `dir` will Show contents of current directory
  
-* `cd ..` will take you back one directory. It stands for change directory.
+* `cd ..` will take you back one directory
 
 * `cd CSI-Python-2021` will bring you back to the project directory (Assuming you went back one directory in the step before)
 
@@ -131,7 +131,7 @@ Typing `python` *(or `python3`)* into the terminal will enter the Python console
 What is a benefit of using Markdown?
 https://www.markdownguide.org/getting-started/
 
- - Answer:Markdown is easy to read and write , its simpler , multi platform , converts text to html.
+ - Answer:Markdown is easy to read and write , its simpler , multi platform , converts text to html and portable.
 
 What does "cd" stand for?
 
