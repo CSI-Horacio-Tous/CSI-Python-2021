@@ -1,4 +1,4 @@
-<div style="text-align:center">
+f<div style="text-align:center">
         <img    src="../../images/csi.png" 
                 title="Colegio San Ignacio" 
                 width="20%" 
