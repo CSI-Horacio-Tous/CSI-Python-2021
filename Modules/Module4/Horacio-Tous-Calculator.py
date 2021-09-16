@@ -16,4 +16,7 @@
 
 
 def Area(width, height ):
-    print(f'Area of the rectangle is')
+    print(f'Area of the rectangle is{int(width) * int(height)}')
+print(f'Width is 5')
+print(f'height is 5')  
+Area( 5 , 5 )    
