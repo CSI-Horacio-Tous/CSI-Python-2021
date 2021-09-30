@@ -10,4 +10,3 @@ Vipprice= (print('The cost for VIP Meet and Greet Tickets is: $', int(VIP) * 150
 
 
 
-total =print int(Balconyprice) + (Plazaprice) + (Vipprice)) 
