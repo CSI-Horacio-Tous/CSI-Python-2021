@@ -1,54 +1,67 @@
-Rock= 'Rock'
-Paper= 'Paper'
-Scissors= 'Scissors'
+def main ():
+
+    playagain = 'y'
+
+    while playagain == 'y' :
+
+        Rock= 'Rock'
+        Paper= 'Paper'
+        Scissors= 'Scissors'
 
 
-moves=input('Rock , Paper , Scissors ?')
-
-import random
-
-foo = [Rock , Paper , Scissors]
-computerChoice = random.choice(foo)
-print(f"Computer selected: {computerChoice}")
+        moves=input('Rock , Paper , Scissors ? \n') 
 
 
-# Rock
-if moves == Rock:
-    
-    if computerChoice == Rock :
-     print ('Tie')
+        import random
 
-    if computerChoice == Paper :
-     print ('Loser')
+        foo = [Rock , Paper , Scissors]
+        computerChoice = random.choice(foo)
+        print(f"Computer selected: {computerChoice}")
 
-    if computerChoice == Scissors :
-     print ('Winner')
+        if computerChoice == moves :
+            print('Tie')
 
 
-# Paper
+        # Rock
+        if moves == Rock:
+            
+            
 
-if moves == Paper:
-    
-    if computerChoice == Paper :
-     print ('Tie')
+            if computerChoice == Paper :
+                print ('Loser')
 
-    if computerChoice == Scissors :
-     print ('Loser')
+            if computerChoice == Scissors :
+                print ('Winner')
 
-    if computerChoice == Rock :
-     print ('Winner')
 
-# Scissors
 
-if moves == Scissors :
-    
-    if computerChoice == Scissors :
-     print ('Tie')
+        # Paper
 
-    if computerChoice == Rock:
-     print ('Loser')
+        if moves == Paper:
+            
 
-    if computerChoice == Paper :
-     print ('Winner')
+
+            if computerChoice == Scissors :
+                print ('Loser')
+
+            if computerChoice == Rock :
+                print ('Winner')
+
+
+
+        # Scissors
+
+        if moves == Scissors :
+            
+            
+            if computerChoice == Rock:
+                print ('Loser')
+
+            if computerChoice == Paper :
+                print ('Winner')
+
+        playagain = input("Play again ? Enter 'y' for yes or 'n' for no \n" )
+    print('Game concluded')
+main()
 
 
