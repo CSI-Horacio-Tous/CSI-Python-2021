@@ -82,8 +82,23 @@ Give a python example for each logic operator in the module image.
 
  - Answers:
    - OR:
-   - AND: 
+   - AND:
+  level= 15
+# stamina= 5
+# health= 5
+
+# if level >= 15 and stamina >= 5 and health >= 5:
+#     print ('You shall pass')
+
+
+
    - NOT: 
+
+agua=1
+aire=2
+
+  if not aire == 2  agua== 1 :
+    print ('You cant live there')
 
 
 Type down any class notes below this sentence:
