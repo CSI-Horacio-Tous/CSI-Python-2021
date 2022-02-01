@@ -1,4 +1,3 @@
-from curses.ascii import isalpha
 import random
 word_list = ["Bayamon", "Aguadilla", "Rincon", "Patillas", "Arecibo", "Loiza", "Aguada",
 "Cayey", "Jayuya", "Isabela" ]
@@ -7,7 +6,7 @@ def get_word(word_list):
     return word.upper()
 
 def play(word):
-    word_completion = "_" * len(word)
+    word_completion = "-" * len(word)
     guessed = False
     guessed_letters= []
     guessed_words = []
@@ -27,14 +26,14 @@ def play(word):
                 tries -= 1
                 guessed_letters.append(guess)
             else:
-                print("Nice one", guess 'is in the word!')
+                print("Nice one" , guess , "is in the word!")
                 guessed_letters .append(guess)
                 word_as_list= list(word_completion)
                 indices = [i for i , letter in enumerate(word) if letter == guess]
                 for index in indices:
                     word_as_list[index]=guess 
                 word_completion = "".join(word_as_list)
-                if "_" not in word_completion:
+                if "-" not in word_completion:
                     guessed = True
         elif len(guess) == len(word) and guess.isalpha():
             if guess in  guessed_words:
@@ -126,3 +125,13 @@ def display_hangman(tries):
  -
  """,
  ]
+ return stages [tries]
+def main ():
+    word = get_word(word_list)
+    play(word)
+    while input ("Again? (Y/N) ").upper() =="Y":
+        word = get_word(word_list)
+        play(word)
+
+if __name__ == "__main__":
+    main()
