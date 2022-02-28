@@ -1,38 +1,41 @@
-
-from stat import FILE_ATTRIBUTE_NOT_CONTENT_INDEXED
+import random
 import pygame
 import time
-pygame.init() # inicia todos los médules de PuBame
-import random 
-yellow = (251, 230, 70) #Score
-black = (0, 0, 0) #pantalla
-red = (250, 76, 70) #game over
+pygame.init()
+
+
+yellow = (251, 230, 70) #score
 green = (107, 250, 158) #food
+black = (0, 0, 0) #background color
 blue = (91, 57, 250) #snake
+red = (250, 76, 70) #game over
 
-dis_width = 500
-dis_height = 400
-
+dis_width = 400
+dis_height = 300
 dis=pygame.display.set_mode((dis_width, dis_height))
-pygame.display.update() #actualiza los cambios que ocurtan en la pantalla
-pygame.display.set_caption("Snake game by JD") # ARaneserá el nombre del jusse
+
+pygame.display.set_caption("Snake game by JD")
 game_over=False
-
-
 
 snake_block = 10
 snake_speed = 30
+
 clock = pygame.time.Clock()
 
-font_style = pygame.font.SysFont(None, 50)
+font_style = pygame.font.SysFont(None, 25)
+score_font = pygame.font.SysFont(None, 25)
+
+def our_snake(snake_block , snake_list):
+    for x in snake_list:
+        pygame.draw.rect(dis, blue, [x[0],x[1],snake_block , snake_block ])
 
 def message(msg, color):
     mesg = font_style.render(msg, True, color)
-    dis.blit(mesg, [dis_width/2, dis_height/2])
+    dis.blit(mesg, [dis_width/7, dis_height/2])
 
 def gameRestart():
     game_over = False
-    game_over = False
+    game_close = False
 
     x1 = dis_width/2
     y1 = dis_height/2
@@ -40,26 +43,31 @@ def gameRestart():
     x1_change = 0
     y1_change = 0
 
-    foodx = round(random.randrange(0 , dis_width - snake_block)  / 10 ) * 10
-    foody = round(random.randrange(0 , dis_width - snake_block)  / 10 ) * 10
+
+    snake_List=[]
+    lenght_of_snake = 1
+
+    foodx = round(random.randrange(0, dis_width - snake_block) / 10) *10
+    foody = round(random.randrange(0, dis_width - snake_block) / 10) *10
+
 
     while not game_over:
 
         while game_close == True:
             dis.fill(black)
-            message("You LOST, Press Q-Quit or P-Play Again" , blue)
-            pygame.display.updatae()
+            message("YOU LOST Press Q-Quit or P-Play Again", red)
+            pygame.display.update()
 
             for event in pygame.event.get():
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_q:
                         game_over = True
                         game_close = False
-                    if event.key ==pygame.K_p:
+                    if event.key == pygame.K_p:
                         gameRestart()
-    
+
         for event in pygame.event.get():
-            if event.type== pygame.QUIT: #cierra la pantalla al pinchar la (x))
+            if event.type==pygame.QUIT:
                 game_over=True
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
@@ -74,22 +82,40 @@ def gameRestart():
                 elif event.key == pygame.K_DOWN:
                     x1_change = 0
                     y1_change = snake_block
-        if x1>= dis_width or x1 < 0 or y1 >= dis_height or y1 < 0:
+        if x1 >= dis_width or x1 < 0 or y1 >= dis_height or y1 < 0:
             game_close = True
-    
+
         x1 += x1_change
         y1 += y1_change
-        dis.fill(black)
-        pygame.draw.rect(dis, blue, [x1, y1, snake_block, snake_block]) #crea snake
-        pygame.draw.rect(dis, green, [foodx,foody , snake_block, snake_block])
-        pygame.display.update()
+        dis.fill(black)  
+        pygame.draw.rect(dis, green, [foodx, foody, snake_block, snake_block])  #crea el food      
+        #pygame.draw.rect(dis, blue, [x1, y1, snake_block, snake_block]) # crea el snake y lo ubica en la pantalla
+        snake_Head = []
+        snake_Head.append(x1)
+        snake_Head.append(y1)
+        snake_List.append(snake_Head)
+        if len (snake_List) > lenght_of_snake:
+            del snake_List[0]
+
+        for x in snake_List[: -1]:
+            if x == snake_Head:
+                game_close = True
+        
+        our_snake(snake_block, snake_List)
+
+        pygame.display.update()   
+
+        if x1 == foodx and y1 == foody :
+            foodx = round(random.randrange(0, dis_width - snake_block) / 10) *10
+            foody = round(random.randrange(0, dis_width - snake_block) / 10) *10
+            lenght_of_snake += 1
+       
+        clock.tick(snake_speed) 
 
 
-        clock.tick(snake_speed)
-
-
-    pygame.quit() #termina todo
+# pygame.display.update()
+# time.sleep(5)
+    pygame.quit()
     quit()
 
 gameRestart()
-
